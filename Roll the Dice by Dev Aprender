@@ -1,0 +1,35 @@
+import random
+import PySimpleGUI as sg
+
+class Gerador_de_Dados:
+    def __init__(self):
+        self.valor_minimo = 1
+        self.valor_maximo = 6
+
+        self.layout= [
+            [sg.Text('jogar o dado')],
+            [sg.Button("sim")] , [sg.Button("não")]
+        ]
+
+    def iniciar (self):
+        self.janela = sg.Window ('Gerador_de_Dados', layout = self.layout)
+        self.evento, self.valores = self.janela.Read()
+        try:
+            if self.evento == "sim" or self.evento == "s":
+                self.gerarValor()
+            elif self.evento == "não" or self.evento == "n":
+                print ("Agradecemos pela participação")
+
+            else:
+                print ("Favor digtar sim ou não")
+
+        except:
+            print ("Ocorreu um erro")
+    def gerarValor(self):
+        print(random.randint (self.valor_minimo, self.valor_maximo))
+
+
+gerador = Gerador_de_Dados()
+gerador.iniciar()
+
+

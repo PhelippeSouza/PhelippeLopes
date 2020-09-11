@@ -1,0 +1,29 @@
+import PySimpleGUI as sg
+import PyPDF2 as pd
+
+sg.theme("DarkBlue 3")
+
+class BusqueArquivo:
+    def __init__(self):
+        self.layout = [
+           [sg.Text("Arquivo")],
+           [sg.Input() , sg.FilesBrowse("Buscar")],
+           [sg.OK("OK") , sg.Cancel("Cancelar")]
+        ]
+
+
+    def iniciar(self):
+        self.janela = sg.Window(" Buscar Arquivo", layout = self.layout)
+        self.evento,self.valores = self.janela.read()
+
+        try:
+            if self.evento == "Cancelar":
+                print ("Tchau")
+            elif self.evento == "OK":
+                pd.PdfFileWriter()
+
+        except:
+            print("")
+
+ler = BusqueArquivo()
+ler.iniciar()
